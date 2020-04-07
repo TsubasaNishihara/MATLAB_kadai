@@ -128,22 +128,17 @@ ch1 = ch1 - ch1_offset;
 ch2 = ch2 - ch2_offset;
 ch3 = ch3 - ch3_offset;
 ch4 = ch4 - ch4_offset;
+%負になったデータは0にする
 for i = 1:dtsize
     if ch1(i) < 0
         ch1(i) = 0;
     end
-end
-for i = 1:dtsize
     if ch2(i) < 0
         ch2(i) = 0;
     end
-end
-for i = 1:dtsize
     if ch3(i) < 0
         ch3(i) = 0;
     end
-end
-for i = 1:dtsize
     if ch4(i) < 0
         ch4(i) = 0;
     end
@@ -177,6 +172,21 @@ ch1 = ch1 / ch1_max;
 ch2 = ch2 / ch2_max;
 ch3 = ch3 / ch3_max;
 ch4 = ch4 / ch4_max;
+%1を超えたデータは1にする
+for i = 1:dtsize
+    if ch1(i) > 1
+        ch1(i) = 1;
+    end
+    if ch2(i) > 1
+        ch2(i) = 1;
+    end
+    if ch3(i) > 1
+        ch3(i) = 1;
+    end
+    if ch4(i) > 1
+        ch4(i) = 1;
+    end
+end
 
 figure;
 subplot(2,2,1);
