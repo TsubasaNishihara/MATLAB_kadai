@@ -214,10 +214,17 @@ sgtitle('正規化');
 %各時間におけるチャンネルの総和を1に調整
 for i = 1:dtsize
     sum = ch1(i) + ch2(i) + ch3(i) + ch4(i);
-    ch1(i) = ch1(i) / sum;
-    ch2(i) = ch2(i) / sum;
-    ch3(i) = ch3(i) / sum;
-    ch4(i) = ch4(i) / sum;
+    if sum == 0
+        ch1(i) = 0;
+        ch2(i) = 0;
+        ch3(i) = 0;
+        ch4(i) = 0;
+    else
+        ch1(i) = ch1(i) / sum;
+        ch2(i) = ch2(i) / sum;
+        ch3(i) = ch3(i) / sum;
+        ch4(i) = ch4(i) / sum;
+    end
 end
 
 figure;
